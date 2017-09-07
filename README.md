@@ -1,6 +1,8 @@
 ### Facebook birthday bot
 Simple Facebook web scraper. It is designed to run once a day. Scraper logs to Facebook and make wish for all your friends, which have birthday at that day. It uses headless chrome (or chromium). You can optionally set webhook and bot will do post on this hook in IFTT format ({value1: 'result'})
 
+**Bot logs to your Facebook account so be cautios with your PASSWORD and USERNAME storage**
+
 ## Build
 Scraper supports free mods:
   * Local - it runs on your local machine and expects chrome or chromium installed
