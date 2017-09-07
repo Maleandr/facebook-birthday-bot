@@ -5,7 +5,6 @@
   "main": "src/handler.js",
   "scripts": {
     "start": "serverless deploy && serverless invoke -f run -l",
-    "go": "zip -r code.zip . && aws --profile quiche s3 cp code.zip s3://quiche-lambda/birthdaybot/code.zip && aws --profile quiche lambda update-function-code --region eu-west-1 --function-name arn:aws:lambda:eu-west-1:310766226378:function:birthdaybot-dev-run --s3-bucket quiche-lambda --s3-key birthdaybot/code.zip --publish",
     "docker": "docker run --rm -e NODE_ENV=DOCKER -v \"$PWD\":/var/task lambci/lambda:nodejs6.10 /src/handler.run",
     "local": "NODE_ENV=LOCAL node ./src/handler.js",
     "lint": "./node_modules/.bin/standard --fix"
