@@ -1,0 +1,29 @@
+{
+  "name": "facebook-birthdaybot-bot",
+  "version": "0.0.1",
+  "description": "Simple facebook scraper wich makes birthday wish",
+  "main": "src/handler.js",
+  "scripts": {
+    "start": "serverless deploy && serverless invoke -f run -l",
+    "go": "zip -r code.zip . && aws --profile quiche s3 cp code.zip s3://quiche-lambda/birthdaybot/code.zip && aws --profile quiche lambda update-function-code --region eu-west-1 --function-name arn:aws:lambda:eu-west-1:310766226378:function:birthdaybot-dev-run --s3-bucket quiche-lambda --s3-key birthdaybot/code.zip --publish",
+    "docker": "docker run --rm -e NODE_ENV=DOCKER -v \"$PWD\":/var/task lambci/lambda:nodejs6.10 /src/handler.run",
+    "local": "NODE_ENV=LOCAL node ./src/handler.js",
+    "lint": "./node_modules/.bin/standard --fix"
+  },
+  "author": "Vlastimil Venclik",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maleandr/facebook-birthday-bot.git"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.109.0",
+    "bluebird": "^3.5.0",
+    "chrome-remote-interface": "^0.22.0",
+    "ps-node": "^0.1.6",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "standard": "^10.0.3",
+    "winston": "^2.3.1"
+  }
+}

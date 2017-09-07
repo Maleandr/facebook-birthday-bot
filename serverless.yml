@@ -1,0 +1,26 @@
+
+service: facebook-birthday-bot
+
+package:
+  exclude:
+      - .idea/**
+      - .git/**
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+  environment:
+    NODE_ENV: LAMBDA
+
+
+functions:
+  run:
+    description: Facebook birthday bot lambda
+    memorySize: 320
+    timeout: 50
+    handler: /src/handler.run
+
+    events:
+      - schedule: cron(0 12 * * ? *)
+
