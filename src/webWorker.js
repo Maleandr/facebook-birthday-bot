@@ -6,7 +6,7 @@ const CDP = require('chrome-remote-interface')
 const Promise = require('bluebird')
 
 const MAIN_URL = 'https://www.facebook.com/'
-const BIRTHDAY_URL = 'https://www.facebook.com/birthdays/'
+const BIRTHDAY_URL = 'https://www.facebook.com/events/birthdays/'
 const REDIRECT_URL = 'https://www.facebook.com/ajax/stream/inline.php'
 
 const RESULT = {OK: 'ok', NO_BIRTHDAYS: 'no_birthdays'}
@@ -157,7 +157,7 @@ class WebWorker {
   static _loadBirthdays (Page) {
     winston.log('debug', 'Loading birthdays...')
 
-    return Page.navigate({url: 'https://www.facebook.com/birthdays/'})
+    return Page.navigate({url: BIRTHDAY_URL})
       .then(() => {
       })
   }
